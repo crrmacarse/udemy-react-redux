@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import SeasonDisplay from './SeasonDisplay';
+import Loading from './Loading';
 
 class App extends React.Component {
-    constructor(props){
-        super(props);
-
-        this.state = {
-            location: null,
-            text: "H",
-            errorMessage: ""
-        }
+    state = {
+        location: null,
+        text: "TEST",
+        errorMessage: ""
     }
 
     componentDidMount() {
@@ -23,21 +21,35 @@ class App extends React.Component {
     changeText = () => {
        
         this.setState( prevState => ({
-            text: prevState.text + "H"
+            text: prevState.text + " TEST"
         }))
+    }
+
+    renderContent = () => {
+        const {location, text, errorMessage} = this.state;
+
+        if(errorMessage && !location) {
+            return (
+                <div>
+                    <h1 style = {{color: 'red'}}>{errorMessage}</h1>
+                </div>)                
+        }
+        else if(!errorMessage && location){
+            return(
+                <SeasonDisplay location = {location} text = {text} errorMessage = {errorMessage} changeText = {this.changeText}/>
+            )
+        }
+        else {
+            return <Loading text = "Please accept location request" />
+        }
     }
     
     render() {
-        const {location, text, errorMessage} = this.state;
-
         return (
             <div>
-                <h1>{text}</h1>
-                <h1 style = {{color: 'red'}}>{errorMessage}</h1>
-                <button type = "button" onClick = {this.changeText}>click</button>
-                <p> Latitude: {location && location.latitude} </p>
-                <p> Longitude: {location && location.longitude} </p>
-            </div>);
+                {this.renderContent()}
+            </div>
+        )
     }
 }
 
