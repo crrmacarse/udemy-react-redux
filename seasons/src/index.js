@@ -13,37 +13,37 @@ class App extends React.Component {
 
     componentDidMount() {
         window.navigator.geolocation.getCurrentPosition(
-            position => this.setState({location: position.coords}),
-            err => this.setState({errorMessage: err.message})
-            )
-     }
+            position => this.setState({ location: position.coords }),
+            err => this.setState({ errorMessage: err.message })
+        )
+    }
 
     changeText = () => {
-       
-        this.setState( prevState => ({
+
+        this.setState(prevState => ({
             text: prevState.text + " TEST"
         }))
     }
 
     renderContent = () => {
-        const {location, text, errorMessage} = this.state;
+        const { location, text, errorMessage } = this.state;
 
-        if(errorMessage && !location) {
+        if (errorMessage && !location) {
             return (
                 <div>
-                    <h1 style = {{color: 'red'}}>{errorMessage}</h1>
-                </div>)                
+                    <h1 style={{ color: 'red' }}>{errorMessage}</h1>
+                </div>)
         }
-        else if(!errorMessage && location){
-            return(
-                <SeasonDisplay location = {location} text = {text} errorMessage = {errorMessage} changeText = {this.changeText}/>
+        else if (!errorMessage && location) {
+            return (
+                <SeasonDisplay location={location} text={text} errorMessage={errorMessage} changeText={this.changeText} />
             )
         }
         else {
-            return <Loading text = "Please accept location request" />
+            return <Loading text="Please accept location request" />
         }
     }
-    
+
     render() {
         return (
             <div>
