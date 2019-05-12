@@ -19,7 +19,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="ui container" style={{ marginTop: "15" }}>
+      <div className="ui container" style={{ marginTop: 15 }}>
         <Searchbar onSubmit={this.onSearchSubmit} />
         <p>Found: {this.state.images.length} images</p>
         <ImageList images={this.state.images} />
