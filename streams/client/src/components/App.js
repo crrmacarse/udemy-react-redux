@@ -10,16 +10,18 @@ import {
   StreamDelete
 } from "./streams";
 
+import { ROUTES } from "../constants";
+
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <Header />
-        <Route path="/" exact component={StreamList} />
-        <Route path="/streams/show" exact component={StreamShow} />
-        <Route path="/streams/new" exact component={StreamCreate} />
-        <Route path="/streams/edit" exact component={StreamEdit} />
-        <Route path="/streams/delete" exact component={StreamDelete} />
+        <Route path={ROUTES.LANDING} exact component={StreamList} />
+        <Route path={ROUTES.STREAM_SHOW} exact component={StreamShow} />
+        <Route path={ROUTES.STREAM_CREATE} exact component={StreamCreate} />
+        <Route path={ROUTES.STREAM_EDIT} exact component={StreamEdit} />
+        <Route path={ROUTES.STREAM_DELETE} exact component={StreamDelete} />
       </BrowserRouter>
     </div>
   );
