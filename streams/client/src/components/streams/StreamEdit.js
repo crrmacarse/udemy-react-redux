@@ -13,7 +13,7 @@ class StreamEdit extends React.Component {
   }
 
   onSubmit = formValues => {
-    const { editStream, stream } = this.props;
+    const { editStream } = this.props;
 
     editStream(this.props.match.params.id, formValues);
   };
