@@ -1,3 +1,16 @@
 {
-  "streams": []
+  "streams": [
+    {
+      "title": "adada",
+      "description": "adad",
+      "userId": "100783500464773515438",
+      "id": 1
+    },
+    {
+      "title": "Example Stream Only",
+      "description": "View Only",
+      "userId": "100783500464773515438",
+      "id": 2
+    }
+  ]
 }
